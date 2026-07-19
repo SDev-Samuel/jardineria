@@ -1,0 +1,363 @@
+/* ============================================================
+   JARDINERÍA Y CULTIVO HIDROPÓNICO — HOJA DE ESTILOS
+   Organizado por secciones para que sea fácil de mantener
+   ============================================================ */
+
+/* ===== IMPORTAR TIPOGRAFÍA (Google Fonts) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Merriweather:wght@400;700&display=swap');
+
+/* ===== VARIABLES DE COLOR (paleta jardín) ===== */
+:root {
+    --verde-oscuro: #2d5a3d;
+    --verde-medio: #4a7c59;
+    --verde-claro: #a8c69f;
+    --tierra: #8b6f47;
+    --tierra-clara: #d8c4a0;
+    --crema: #f5f0e6;
+    --blanco: #ffffff;
+    --amarillo-sol: #e8b64c;
+    --rojo-alerta: #b5533c;
+    --sombra: rgba(45, 90, 61, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* hace que los enlaces del nav se deslicen suavemente */
+}
+
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--crema);
+    background-image: linear-gradient(rgba(245, 240, 230, 0.92), rgba(245, 240, 230, 0.92)),
+                       url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #3a3a3a;
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+    color: var(--blanco);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+
+header h1::before {
+    content: "🌿 ";
+}
+
+header p {
+    margin: 0;
+    font-style: italic;
+    color: var(--verde-claro);
+}
+
+/* ===== NAVEGACIÓN ===== */
+nav ul {
+    list-style: none;
+    margin: 15px 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+main {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+section {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px var(--sombra);
+    border-left: 5px solid var(--verde-medio);
+    scroll-margin-top: 130px; /* evita que el header sticky tape el título al saltar con el nav */
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    margin-top: 0;
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Iconos temáticos automáticos según el tipo de sección */
+h2.tierra::before   { content: "🌱"; }
+h2.sol::before       { content: "☀️"; }
+h2.riego::before     { content: "💧"; }
+h2.herramientas::before { content: "🧰"; }
+h2.calendario::before   { content: "📅"; }
+h2.compost::before      { content: "♻️"; }
+h2.plagas::before       { content: "🐛"; }
+h2.faq::before          { content: "❓"; }
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--verde-oscuro);
+}
+
+p {
+    font-size: 17px;
+    color: #555;
+}
+
+a {
+    color: var(--verde-medio);
+}
+
+/* ===== IMÁGENES ===== */
+img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+figcaption {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+
+/* ===== TARJETAS DE CUIDADO (grid reutilizable) ===== */
+.cuidados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.cuidado-card {
+    background-color: var(--crema);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--verde-claro);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cuidado-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px var(--sombra);
+}
+
+.cuidado-card h3 {
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+/* ===== TABLA DE CALENDARIO DE SIEMBRA ===== */
+.tabla-wrapper {
+    overflow-x: auto; /* para que no se rompa en móviles, se puede hacer scroll lateral */
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    min-width: 500px;
+}
+
+thead {
+    background-color: var(--verde-oscuro);
+    color: var(--blanco);
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--verde-claro);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--crema);
+}
+
+tbody tr:hover {
+    background-color: var(--verde-claro);
+}
+
+/* Etiqueta de temporada, reutilizable dentro de la tabla */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blanco);
+}
+
+.badge.primavera { background-color: #6fae55; }
+.badge.verano    { background-color: var(--amarillo-sol); color: #3a3a3a; }
+.badge.otono     { background-color: var(--tierra); }
+.badge.invierno  { background-color: #5b7a99; }
+
+/* ===== LISTA DE PASOS NUMERADOS (para procesos reales, ej. compostaje) ===== */
+.pasos {
+    counter-reset: paso;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.pasos li {
+    counter-increment: paso;
+    position: relative;
+    padding: 14px 20px 14px 55px;
+    margin-bottom: 12px;
+    background-color: var(--crema);
+    border-radius: 8px;
+    border-left: 4px solid var(--tierra);
+}
+
+.pasos li::before {
+    content: counter(paso);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--tierra);
+    color: var(--blanco);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* ===== ALERTA DE PLAGAS (caja de aviso) ===== */
+.alerta {
+    background-color: #fbeae6;
+    border-left: 5px solid var(--rojo-alerta);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-size: 15px;
+}
+
+.alerta strong {
+    color: var(--rojo-alerta);
+}
+
+/* ===== FAQ (acordeón nativo con <details>) ===== */
+.faq-item {
+    border: 1px solid var(--verde-claro);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-item summary {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding: 14px 18px;
+    background-color: var(--crema);
+    color: var(--verde-oscuro);
+    list-style: none; /* oculta la flecha por defecto del navegador */
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    float: right;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.faq-item[open] summary::after {
+    content: "–";
+}
+
+.faq-item p {
+    padding: 0 18px 16px 18px;
+    margin: 0;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+footer {
+    background-color: var(--verde-oscuro);
+    color: var(--verde-claro);
+    text-align: center;
+    padding: 24px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--blanco);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 24px;
+    }
+    nav a {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    section {
+        padding: 20px;
+    }
+    img {
+        height: 200px;
+    }
+}
